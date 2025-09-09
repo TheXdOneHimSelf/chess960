@@ -22,7 +22,7 @@ jobs:
 
     - name: Run Chess960 Downloader
       run: |
-        python 960.py
+        python -u 960.py
 
     - name: Upload PGN files
       uses: actions/upload-artifact@v4
