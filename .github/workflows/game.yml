@@ -24,8 +24,10 @@ jobs:
       run: |
         python -u 960.py
 
-    - name: Upload PGN files
-      uses: actions/upload-artifact@v4
-      with:
-        name: chess960-games
-        path: "*.pgn"
+    - name: Commit PGNs
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add *.pgn
+        git commit -m "Update PGNs from Lichess bots" || echo "No changes to commit"
+        git push
